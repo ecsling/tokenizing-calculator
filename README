@@ -1,4 +1,4 @@
-# what I learned, qna's
+# my qna's
 
 Q1: What is the purpose of include/, src/, and Makefile in a C project?
 
@@ -17,3 +17,4 @@ Makefile -- tells the `make` command how to compile and link your program. Why u
 * lets you set compiler flags and include paths (i.e `-Iinclude`)
 
 flow: include/my_bc.h declares functions, src/tokenizer.c defines those functions, src/main.c includes the header and uses functions
+
