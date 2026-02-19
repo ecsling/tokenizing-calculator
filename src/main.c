@@ -10,6 +10,10 @@ int main(int argc, char **argv) {
     (void)argv;
 
     // vector tokens, vector rpn
+    t_vec tokens, rpn; 
+    vec_init(&tokens, sizeof(t_token));
+    vec_init(&rpn, sizeof(t_token));
+
 
     // lexer (makes the tokens usable)
 
