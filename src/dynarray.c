@@ -48,3 +48,16 @@ void *vec_at(t_vec *v, size_t i) {
     if (!v || i >= v->size || v->data == NULL) return NULL;
     return (char*)v->data + i * v->elem;
 }
+
+// vec_back returns a pointer to the last element in the vector; or NULL if empty
+void *vec_back(t_vec *v) {
+    if (v->size == 0) return NULL;
+    return (char*)v->data + (v->size - 1) * v->elem;
+}
+
+// vec_pop pops the last element from the vector 
+int vec_pop(t_vec *v) {
+    if (v->size == 0) return -1;
+    v->size--;
+    return 0;
+}
