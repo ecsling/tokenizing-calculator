@@ -16,11 +16,12 @@ int main(int argc, char **argv) {
 
     // lexer (makes the tokens usable)
     lex(argv[1], &tokens);
-    
+
     // shunting yard algorithm -> rpn 
     to_rpn(&tokens, &rpn);
 
     // evaluate rpn
+    eval_rpn(&rpn);
 
     // success
 

@@ -14,7 +14,7 @@ const char *err_message(void) {
     return "";
 }
 
-void err_print_and_clear(void) {
+int err_print_and_clear(void) {
     const char *m = err_message();
     if (m && *m) {
         // compute the length
@@ -22,5 +22,8 @@ void err_print_and_clear(void) {
         while (m[len]) len++;
         (void)write(2, m, (unsigned int)len);
         (void)write(2, "\n", 1);
+        g_err = 0;
+        return 1;
     }
+    return 0;
 }
