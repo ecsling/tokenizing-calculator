@@ -1,8 +1,10 @@
-# GOALS
-* Learn C
-* Learn tokenization
-* Implement shunting yard algorithm
-* Understand how lexing, shunting yard algorithm, and evaluation connect together
+# GOALS / SKILLS LEARNED
+* C
+* Parsing and Tokenization
+* Expression Evaluation & Operator Precedence
+* Data Structures (Stacks, Queues, Lists)
+* String processing 
+* Algorithm Design (Understanding how lexing, shunting yard algorithm, and evaluation connect together)
 
 
 # Q&A
