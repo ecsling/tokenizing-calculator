@@ -9,7 +9,9 @@
 
 // error handling
 void err_set_parse(void);
-void err_print_and_clear(void);
+// Print the current error message (if any) to stderr, clear the error state,
+// and return 1 if a message was printed or 0 otherwise.
+int err_print_and_clear(void);
 
 // tiny dynamic array
 typedef struct s_vec {
