@@ -15,15 +15,31 @@ int main(int argc, char **argv) {
     vec_init(&rpn, sizeof(t_token));
 
     // lexer (makes the tokens usable)
-    lex(argv[1], &tokens);
+    if (lex(argv[1], &tokens) != 0) {
+        err_print_and_clear();
+        vec_free(&tokens);
+        vec_free(&rpn);
+        return 1;
+    }
 
     // shunting yard algorithm -> rpn 
-    to_rpn(&tokens, &rpn);
+    if (to_rpn(&tokens, &rpn) != 0) {
+        err_print_and_clear();
+        vec_free(&tokens);
+        vec_free(&rpn);
+        return 1;
+    }
 
     // evaluate rpn
-    eval_rpn(&rpn);
+    long long result = eval_rpn(&rpn);
+    if (err_print_and_clear()) {
+        vec_free(&tokens);
+        vec_free(&rpn);
+        return 1;
+    }
 
-    // success
+    // success: print the result
+    (void)printf("%lld\n", result);
 
     vec_free(&tokens);
     vec_free(&rpn);
