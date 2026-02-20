@@ -1,4 +1,5 @@
 # GOALS
+* Get better at C
 * Learn tokenization
 * Implement shunting yard algorithm
 * Understand how lexing, shunting yard algorithm, and evaluation connect together
