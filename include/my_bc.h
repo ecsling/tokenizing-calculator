@@ -54,4 +54,9 @@ int to_rpn(const t_vec *tokens, t_vec *out_rpn);
 void *vec_back(t_vec *v);
 int vec_pop(t_vec *v);
 
+// Evaluate RPN tokens and return the resulting integer value.
+// On parse/runtime error the function should call `err_set_parse()` and
+// return 0 (the global error state indicates failure).
+long long eval_rpn(const t_vec *rpn);
+
 #endif /* MY_BC_H */
