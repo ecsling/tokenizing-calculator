@@ -1,5 +1,3 @@
-#include "my_bc.h"
-
 /*
 SHUNTING YARD (infix -> RPN tokens)
 
@@ -16,6 +14,8 @@ Precedence:
 
 */
 
+#include "my_bc.h"
+
 static int is_op_token(const t_token *tok) {
     return tok->type == TOK_OP;
 }
@@ -29,7 +29,7 @@ int to_rpn(const t_vec *tokens, t_vec *out_rpn) {
         t_token tok = *(t_token*)((char*)tokens->data + i * tokens->elem);
         
         // if number
-        if (tok.type = TOK_INT) {
+        if (tok.type == TOK_INT) {
             // push to output queue
             if (vec_push(out_rpn, &tok) != 0) {
                 err_set_parse();
@@ -38,17 +38,18 @@ int to_rpn(const t_vec *tokens, t_vec *out_rpn) {
             }
         } else if (tok.type == TOK_OP) {
             // if operator. pop while top has higher prec, or same prec and current is left-assoc
-            t_token *top;
+            t_token *top = vec_back(&stack);
 
-            while (((top = vec_back(&stack) && is_op_token(top)) && 
-                    (tok.assoc == ASSOC_LEFT && top->prec >= tok.prec)) || 
-                    (tok.assoc == ASSOC_RIGHT && top->prec > tok.prec)) {
-                        if (vec_push(out_rpn, top) != 0) {
-                            err_set_parse();
-                            vec_free(&stack);
-                            return -1;
-                        }
-                        vec_pop(&stack);
+            while (top && is_op_token(top) &&
+                   ((tok.assoc == ASSOC_LEFT && top->prec >= tok.prec) ||
+                    (tok.assoc == ASSOC_RIGHT && top->prec > tok.prec))) {
+                if (vec_push(out_rpn, top) != 0) {
+                    err_set_parse();
+                    vec_free(&stack);
+                    return -1;
+                }
+                vec_pop(&stack);
+                top = vec_back(&stack);
             }
             if (vec_push(&stack, &tok) != 0) {
                 err_set_parse();
