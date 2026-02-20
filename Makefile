@@ -23,3 +23,9 @@ asan: CFLAGS += -g3 -fsanitize=address
 asan: re
 
 .PHONY: all clean fclean re asan
+
+# Run the test harness (builds binary if needed)
+test: all
+	./tests/run_tests.sh
+
+.PHONY: test
