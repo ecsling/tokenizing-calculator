@@ -48,4 +48,10 @@ typedef struct s_token {
 // Return 0 on success, non-zero: error (set parse error)
 int lex(const char *s, t_vec *out_tokens);
 
+// Shunting yard algorithm: infix tokens -> rpn
+// Returns 0 on success, non-zero: error (set parse error
+int to_rpn(const t_vec *tokens, t_vec *out_rpn);
+void *vec_back(t_vec *v);
+int vec_pop(t_vec *v);
+
 #endif /* MY_BC_H */
