@@ -1,5 +1,5 @@
 # GOALS
-* Get better at C
+* Learn C
 * Learn tokenization
 * Implement shunting yard algorithm
 * Understand how lexing, shunting yard algorithm, and evaluation connect together
@@ -12,7 +12,7 @@
 A token is the smallest meaningful unit of the input expression. 
 Instead of interpreting raw characters (i.e '+'), we convert the input string into a sequence of typed tokens with enough metadata for later stages to work mechanically (reduces guesswork). 
 
-Applications: turns raw text into "units" that LLMs can actually work with. 
+turns raw text into "units" that LLMs can actually work with. 
 
 ### Q2: (ref. dynarray.c) Why does vec_init return int, but vec_free returns nothing (void)?
 
